@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Наряды</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/order_list.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: menu}">
+
+</div>
+
+<div class="filtOrder">
+    <table class="tFiltOrder">
+        <thead>
+        <tr>
+            <td class="fil">
+                ID карты
+            </td>
+            <td class="fil2">
+                <label for="C_ID">
+                    <input type="text" id="C_ID">
+                </label>
+            </td>
+
+            <td class="fil">
+                Дата корректировки
+            </td>
+            <td class="fil2">
+                <label for="C_DATE_KORR">
+                    <input type="date" id="C_DATE_KORR">
+                </label>
+            </td>
+            <td class="fil">
+                Статус
+            </td>
+            <td class="fil2">
+                <label for="C_STATUS">
+                    <input type="text" id="C_STATUS">
+                </label>
+            </td>
+
+        </tr>
+        <tr>
+            <td class="fil" >
+                Номер карты
+            </td>
+            <td class="fil2">
+                <label for="C_NUM_CARD">
+                    <input type="text" id="C_NUM_CARD">
+                </label>
+            </td>
+
+            <td class="fil">
+                Дата создания
+            </td>
+            <td class="fil2">
+                <label for="C_DATE_CREATE">
+                    <input type="date" id="C_DATE_CREATE">
+                </label>
+            </td>
+            <td class="fil">
+                Ответственный
+            </td>
+            <td class="fil2">
+                <label for="C_OTV">
+                    <input type="text" id="C_OTV">
+                </label>
+            </td>
+        </tr>
+        <!--   <tr>
+             <td class="tNewOrder">
+               <button type="button" id="" class="button newOrder">
+                 <a th:href="@{order_create}">
+                   Создать
+                 </a>
+               </button>
+             </td>
+             <td class="none"></td>
+             <td class="none"></td>
+             <td class="none"></td>
+             <td class="none"></td>
+           </tr>-->
+        </thead>
+        <tbody>
+
+        <!-- вывод данных из БД-->
+
+        </tbody>
+
+    </table>
+</div>
+
+<div class="orderList">
+    <table class="tOrderList">
+        <thead>
+        <tr class="tOrderListFilt">
+            <td class="fil1">
+                id наряда
+            </td>
+            <td class="fil1">
+                № Наряда
+            </td>
+            <td class="fil1">
+                Система
+            </td>
+            <td class="fil1">
+                Технолог
+            </td>
+            <td class="fil1">
+                Программист
+            </td>
+            <td class="fil1">
+                Дата создания
+            </td>
+            <td class="fil1">
+                Ответственный
+            </td>
+            <td class="fil1">
+
+            </td>
+        </tr>
+        </thead>
+        <tbody class="mdata">
+
+        <tr th:each="ol : ${listOrders}">
+
+            <td th:text="${ol.idOrders}"></td>
+            <td th:text="${ol.number}"></td>
+            <td th:text="${ol.systems}"></td>
+            <td th:text="${ol.idTech}"></td>
+            <td th:text="${ol.idProg}"></td>
+            <td th:text="${ol.dateCreate}"></td>
+            <td th:text="${ol.idOtv}"></td>
+            <td>
+                <a th:class="openOrder" th:href="@{order_view/{idOrders}(idOrders=${ol.idOrders})}">
+                    Открыть</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

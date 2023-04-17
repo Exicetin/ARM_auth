@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корректировка данных пользователя</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/user.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/menu/menu::menu}">
+</div>
+<div class="cont">
+    <form th:action="@{save_user_change/{idUser}(idUser=${user_edit.idUser})}" class="user_form" th:object="${user_edit}" method="post">
+        <input type="text" th:field="${user_edit.login}" placeholder="Введите логин">
+        <input type="text" th:field="${user_edit.password}" placeholder="Введите пароль">
+        <!--        <select>-->
+        <!--            <option th:default="Роль"></option>-->
+        <!--        </select>-->
+        <input type="text" th:field="${user_edit.role}" placeholder="Введите роль">
+        <input type="text" th:field="${user_edit.firstName}" placeholder="Введите фамилию">
+        <input type="text" th:field="${user_edit.lastName}" placeholder="Введите имя">
+        <input type="text" th:field="${user_edit.middleName}" placeholder="Введите отчество">
+        <input type="text" th:field="${user_edit.phone}" placeholder="Введите номер телефона">
+        <input type="text" th:field="${user_edit.mail}" placeholder="Введите почту">
+        <input type="text" th:field="${user_edit.dateCreate}" class="disabled-option" tabindex="-1">
+        <input type="submit" value="Сохранить">
+    </form>
+</div>
+</body>
+</html>

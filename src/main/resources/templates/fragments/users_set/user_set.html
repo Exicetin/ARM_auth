@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки пользователей</title>
+</head>
+<body>
+<div th:replace="~{fragments/menu/menu :: menu}">
+</div>
+<div class="systems_set">
+    <a th:attr="onclick=|getSystems()|">Просмотр пользователей</a>
+</div>
+
+<div id="hidden_systems" style="display: none;" >
+    <div th:replace="~{fragments/systems_set/system_set::system_set}">
+
+    </div>
+</div>
+<script>
+    function getSystems() {
+        if(document.getElementById("hidden_systems").style.display == "none"){
+            document.getElementById("hidden_systems").style.display ="block"
+        }
+        document.getElementById("hidden_groups").style.display = "none";
+        document.getElementById("hidden_users").style.display = "none";
+        document.getElementById("hidden_role").style.display = "none"
+    }
+
+</script>
+
+</body>
+</html>

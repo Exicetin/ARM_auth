@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/settings.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/menu/menu :: menu}">
+</div>
+<div class="systems_set">
+    <button th:action="@{system_set}">
+        <a th:attr="onclick=|getSystems()|">Системы</a>
+    </button>
+    <button>
+        <a th:attr="onclick=|getGroups()|">Группы</a>
+    </button>
+        <a th:attr="onclick=|getUsers()|">Пользователи</a>
+    <a th:attr="onclick=|getRole()|">Роли</a>
+</div>
+
+<div id="hidden_systems" style="display: none;" >
+    <div th:replace="~{fragments/systems_set/system_set::system_set}">
+
+    </div>
+</div>
+<script>
+    function getSystems() {
+        if(document.getElementById("hidden_systems").style.display == "none"){
+            document.getElementById("hidden_systems").style.display ="block"
+        }
+        document.getElementById("hidden_groups").style.display = "none";
+        document.getElementById("hidden_users").style.display = "none";
+        document.getElementById("hidden_role").style.display = "none"
+    }
+
+</script>
+<div id="hidden_groups" class="" style="display: none;">
+    <div th:replace="~{fragments/groups_set/group_set::group_set}">
+
+    </div>
+</div>
+<script>
+    function getGroups() {
+        if(document.getElementById("hidden_groups").style.display == "none"){
+            document.getElementById("hidden_groups").style.display ="block"
+        }
+        document.getElementById("hidden_systems").style.display = "none";
+        document.getElementById("hidden_users").style.display = "none";
+        document.getElementById("hidden_role").style.display = "none"
+    }
+</script>
+<div id="hidden_users" style="display: none;">
+    <div th:replace="~{fragments/users_set/add_user::users_set}">
+
+    </div>
+</div>
+<script>
+    function getUsers() {
+        if(document.getElementById("hidden_users").style.display == "none"){
+            document.getElementById("hidden_users").style.display ="block"
+        }
+        document.getElementById("hidden_systems").style.display = "none";
+        document.getElementById("hidden_groups").style.display = "none";
+        document.getElementById("hidden_role").style.display = "none"
+    }
+</script>
+<div id="hidden_role" style="display: none;">
+    <div th:replace="~{fragments/roles_set/role_set::role_set}">
+
+    </div>
+</div>
+<script>
+    function getRole() {
+        if(document.getElementById("hidden_role").style.display == "none"){
+            document.getElementById("hidden_role").style.display ="block"
+        }
+        document.getElementById("hidden_systems").style.display = "none";
+        document.getElementById("hidden_groups").style.display = "none";
+        document.getElementById("hidden_users").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Карты</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/card_list.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+</head>
+<body>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<div class="topnav" id="myTopnav">
+
+    <a th:href="@{/resources/templates/order_list}">
+        Наряды
+    </a>
+    <a th:href="@{/resources/templates/card_list}">
+        Сборки
+    </a>
+    <a th:href="@{/resources/templates/dashboard}">
+        Доска
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Настройки
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Сервисы
+    </a>
+    <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+        Создать наряд
+    </a>
+</div>
+
+<div class="card-filters">
+    <div class="card-filters-cont">
+        <div>Разработчик</div>
+        <div>Статус</div>
+        <div>Номер сборки</div>
+        <div>
+            <input type="text" id="с_developer">
+        </div>
+        <div>
+            <input type="text" id="c_status">
+        </div>
+        <div>
+            <input type="text" id="с_num_assembly">
+        </div>
+        <div>Программист</div>
+        <div>Дата создания</div>
+        <div>Номер наряда</div>
+        <div>
+            <input type="text" id="c_programmer">
+        </div>
+        <div>
+            <input type="date" id="c_date_create">
+        </div>
+        <div>
+            <input type="text" id="c_num_order">
+        </div>
+        <div>Технолог</div>
+        <div>Дата корректировки</div>
+        <div></div>
+        <div>
+            <input type="text" id="c_tech">
+        </div>
+        <div>
+            <input type="date" id="c_date_adjustment">
+        </div>
+        <div>
+            <input type="submit" class="search-button" value="Поиск">
+        </div>
+    </div>
+</div>
+
+<div class="card-list">
+    <table class="card-list-table">
+        <thead>
+        <tr class="card-list-filters-table">
+            <th class="filters-row-1">
+                id карты
+            </th>
+            <th class="filters-row-1">
+                Ответственный
+            </th>
+            <th class="filters-row-1">
+                Номер карты
+            </th>
+            <th class="filters-row-1">
+                Номер письма
+            </th>
+            <th class="filters-row-1">
+                Система
+            </th>
+            <th class="filters-row-1">
+                Дата корректировки
+            </th>
+            <th class="filters-row-1">
+                Дата создания
+            </th>
+            <th class="filters-row-1">
+                Дата отправления письма
+            </th>
+            <th class="filters-row-1"></th>
+       </tr>
+        </thead>
+      <tbody class="mdata">
+       <tr th:each="lst : ${listCards}">
+           <td th:text="${lst.idCards}">1</td>
+           <td th:text="${lst.idOtv}">1</td>
+           <td th:text="${lst.numberCard}">12</td>
+           <td th:text="${lst.numberLetter}">32</td>
+           <td th:text="${lst.system}">2</td>
+           <td th:text="${lst.dateCorrect}">12.12.2022</td>
+           <td th:text="${lst.dateCreate}">03.08.2002</td>
+           <td th:text="${lst.sendLetter}">22.12.2001</td>
+           <td>
+               <a th:class="open-card-link" th:href="@{card_view/{idCards}(idCards=${lst.idCards})}">
+                   Открыть
+               </a>
+           </td>
+         </tr>
+       </tbody>
+
+    </table>
+</div>
+</body>
+</html>

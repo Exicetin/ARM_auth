@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<header class="Menu" th:fragment="menu">
+    <div class="topnav" id="myTopnav" th:fragment="menu">
+        <div class="navbar">
+            <a th:href="@{/resources/templates/order_list}">
+                Наряды
+            </a>
+        </div>
+        <div class="navbar">
+            <a th:href="@{/resources/templates/dashboard}">
+                Доска
+            </a>
+        </div>
+        <div class="navbar">
+            <a th:href="@{/resources/templates/page_not_found}">
+                Сервисы
+            </a>
+        </div>
+        <div class="navbar">
+            <div class="dropdown">
+                <button class="dropbtn">Настройки АРМа
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a th:href="@{/resources/templates/user_list}">Пользователи</a>
+                    <a th:href="@{/resources/templates/settings}">Группы</a>
+                    <a th:href="@{/resources/templates/settings}">Системы</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="dropdown">
+                <button class="dropbtn">Настройки
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a th:href="@{/resources/templates/settings}">Личные данные</a>
+                    <a th:href="@{/resources/templates/settings}">Уведомления</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar new-order">
+            <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+                Создать наряд
+            </a>
+        </div>
+    </div>
+</header>
+</body>
+</html>
