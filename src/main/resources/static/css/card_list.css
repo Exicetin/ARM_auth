@@ -76,7 +76,8 @@
 
 .search-button{
     width: 70%;
-
+    background: #6D9886;
+    border: 0.5px solid lightgrey;
 }
 
 .new-card{

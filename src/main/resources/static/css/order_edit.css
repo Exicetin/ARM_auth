@@ -204,3 +204,9 @@ tr{
     padding: 20px 0 20px 0;
     border-collapse: collapse;
 }
+
+.new-order-button{
+    width: 80%;
+    background: #6D9886;
+    color: white;
+}
