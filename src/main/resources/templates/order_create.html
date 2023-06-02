@@ -17,26 +17,43 @@
   <table class="tOrderView">
     <tbody>
     <tr>
-      <td class="h2" colspan="4" >
+      <td class="td2">
+        Номер наряда
+      </td>
+      <td class="h2" colspan="2" >
         Номер будет присвоен автоматически
       </td>
-    </tr>
-    <tr>
-      <td class="h2" colspan="4">
-        <select th:field="*{systems}">
-          <option th:each="ocSys:${systemList}"
-                  th:value="${ocSys.system}"
-                  th:text="${ocSys.system}"></option>
-        </select>
+      <td class="create-with-template">
+        <input type="checkbox" id="template">
+        <label for="template">Сохранить как шаблон</label>
       </td>
     </tr>
     <tr>
-      <td class="h2" colspan="4" >
-        <input type="text" th:field="*{assemblyNumber}" placeholder="Номер сборки" th:default="ЕМД-ПП">
+      <td class="td2">
+        Система
+      </td>
+      <td class="h2" colspan="2">
+<!--        <select th:field="*{systems}">-->
+<!--          <option th:each="ocSys:${systemList}"-->
+<!--                  th:value="${ocSys.system}"-->
+<!--                  th:text="${ocSys.system}"></option>-->
+<!--        </select>-->
+        <input type="text" th:field="*{systems}" placeholder="Система">
       </td>
     </tr>
     <tr>
-      <td class="h2" colspan="4" >
+      <td class="td2">
+        Номер сборки
+      </td>
+      <td class="h2" colspan="2">
+        <input type="text" th:field="*{assemblyNumber}" placeholder="Номер сборки">
+      </td>
+    </tr>
+    <tr>
+      <td class="td2">
+        Ссылка на OP
+      </td>
+      <td class="h2" colspan="2">
       <input class="assembly-link" type="text" th:field="*{assemblyLink}" placeholder="Ссылка на сборку">
       </td>
     </tr>
@@ -493,7 +510,7 @@
   <table class="tOrderMenu">
     <tr>
       <td class="tm1">
-        <input type="submit" value="Сохранить" />
+        <input class="new-order-button" type="submit" value="Сохранить" />
       </td>
     </tr>
   </table>

@@ -8,7 +8,7 @@
 <body>
 <h1>Войти</h1>
     <div id="wrapper">
-        <form id="signin" method="post" th:action="@{/resources/templates/card_list}">
+        <form id="signin" method="post" th:action="@{login}" th:object="${auth}">
             <input type="text" id="user" name="user" placeholder="username" />
             <input type="password" id="pass" name="pass" placeholder="password" />
             <button type="submit">&#xf0da;</button>

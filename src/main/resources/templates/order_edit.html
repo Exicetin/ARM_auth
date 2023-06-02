@@ -17,25 +17,34 @@
   <table class="tOrderView">
     <tbody>
     <tr>
-      <td class="h2" colspan="4">
+      <td class="td2">
+        Номер наряда
+      </td>
+      <td class="h2" colspan="2">
         <input type="text" id="number" th:field="${orderKorr.number}" class="disabled-option" tabindex="-1">
       </td>
-<!--      <td class="h2" colspan="1">-->
-<!--        <input type="checkbox" value="template">-->
-<!--      </td>-->
     </tr>
     <tr>
-      <td class="h1" colspan="4">
+      <td class="td2">
+        Система
+      </td>
+      <td class="h1" colspan="2">
         <input type="text" id="system" th:field="${orderKorr.systems}" class="disabled-option" tabindex="-1">
       </td>
     </tr>
     <tr>
-      <td class="h2" colspan="4" >
+      <td class="td2">
+        Номер сборки
+      </td>
+      <td class="h2" colspan="2">
         <input type="text" th:field="${orderKorr.assemblyNumber}" placeholder="Номер сборки">
       </td>
     </tr>
     <tr>
-      <td class="h1" colspan="4">
+      <td class="td2">
+        Ссылка на OP
+      </td>
+      <td class="h1" colspan="2">
         <input class="assembly-link" type="text" th:field="${orderKorr.assemblyLink}">
       </td>
     </tr>

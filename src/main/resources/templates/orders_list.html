@@ -3,111 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <title>Наряды</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/order_list.css}"/>
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
 </head>
 <body>
+<header th:replace="~{fragments/menu/menu :: menu}">
+</header>
+<main>
+  <div>
+    <form>
+      <div class="conteiner-lg">
+        <div class="row">
+          <div class="col">
+            <label for="ao_developer" class="form-label">Разработчик</label>
+            <input type="text" id="ao_developer" class="form-control">
+          </div>
+          <div class="col">
+            <label for="ao_status" class="form-label">Статус</label>
+            <input type="text" id="ao_status" class="form-control">
+          </div>
+          <div class="col">
+            <label for="ao_assembly_number" class="form-label">Номер сборки</label>
+            <input type="text" id="ao_assembly_number" class="form-control">
+          </div>
+        </div>
 
-<div th:replace="~{fragments/menu/menu :: menu}">
-</div>
+        <div class="row">
+          <div class="col">
+            <label for="ao_programmer" class="form-label">Программист</label>
+            <input type="text" id="ao_programmer" class="form-control">
+          </div>
+          <div class="col">
+            <label for="ao_date_create" class="form-label">Статус</label>
+            <input type="text" id="ao_date_create" class="form-control">
+          </div>
+          <div class="col">
+            <label for="ao_num_order" class="form-label">Номер сборки</label>
+            <input type="text" id="ao_num_order" class="form-control">
+          </div>
+        </div>
 
-<div class="orders-filters">
-  <div class="orders-filters-cont">
-    <div>Разработчик</div>
-    <div>Статус</div>
-    <div>Номер сборки</div>
-    <div>
-      <input type="text" id="с_developer">
-    </div>
-    <div>
-      <input type="text" id="c_status">
-    </div>
-    <div>
-      <input type="text" id="с_num_assembly">
-    </div>
-    <div>Программист</div>
-    <div>Дата создания</div>
-    <div>Номер наряда</div>
-    <div>
-      <input type="text" id="c_programmer">
-    </div>
-    <div>
-      <input type="date" id="c_date_create">
-    </div>
-    <div>
-      <input type="text" id="c_num_order">
-    </div>
-    <div>Технолог</div>
-    <div>Дата корректировки</div>
-    <div></div>
-    <div>
-      <input type="text" id="c_tech">
-    </div>
-    <div>
-      <input type="date" id="c_date_adjustment">
-    </div>
-    <div>
-      <input type="submit" class="search-button" value="Поиск">
-    </div>
+        <div class="row">
+          <div class="col">
+            <label for="ao_technical" class="form-label">Технолог</label>
+            <input type="text" id="ao_technical" class="form-control">
+          </div>
+          <div class="col">
+            <label for="ao_edit_date" class="form-label">Дата корректировки</label>
+            <input type="text" id="ao_edit_date" class="form-control">
+          </div>
+          <div class="col">
+            <label for="" class="form-label">Номер наряда</label>
+            <input type="text" id="" class="form-control">
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
-</div>
+  <!--<div class="orders-filters">-->
+  <!--  <div class="orders-filters-cont">-->
+  <!--    <div>Разработчик</div>-->
+  <!--    <div>Статус</div>-->
+  <!--    <div>Номер сборки</div>-->
+  <!--    <div>-->
+  <!--      <input type="text" id="с_developer">-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <input type="text" id="c_status">-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <input type="text" id="с_num_assembly">-->
+  <!--    </div>-->
+  <!--    <div>Программист</div>-->
+  <!--    <div>Дата создания</div>-->
+  <!--    <div>Номер наряда</div>-->
+  <!--    <div>-->
+  <!--      <input type="text" id="c_programmer">-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <input type="date" id="c_date_create">-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <input type="text" id="c_num_order">-->
+  <!--    </div>-->
+  <!--    <div>Технолог</div>-->
+  <!--    <div>Дата корректировки</div>-->
+  <!--    <div></div>-->
+  <!--    <div>-->
+  <!--      <input type="text" id="c_tech">-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <input type="date" id="c_date_adjustment">-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <input type="submit" class="search-button" value="Поиск">-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 
-<div class="orders-list">
-  <table class="orders-list-table" id="orderList">
-    <thead>
-    <tr class="orders-list-filters-table">
-      <td class="filters-row-1">
-        id наряда
-      </td>
-      <td class="filters-row-1">
-        Номер сборки
-      </td>
-      <td class="filters-row-1">
-        № Наряда
-      </td>
-      <td class="filters-row-1">
-        Система
-      </td>
-      <td class="filters-row-1">
-        Технолог
-      </td>
-      <td class="filters-row-1">
-        Программист
-      </td>
-      <td class="filters-row-1">
-        Дата создания
-      </td>
-      <td class="filters-row-1">
-        Ответственный
-      </td>
-      <td class="filters-row-1">
-        Шаблон
-      </td>
-      <td class="filters-row-1">
+  <div class="">
+    <table class="table table-striped" id="orderList">
+      <thead>
+      <tr class="orders-list-filters-table">
+        <td class="filters-row-1">
+          id наряда
+        </td>
+        <td class="filters-row-1">
+          Номер сборки
+        </td>
+        <td class="filters-row-1">
+          № Наряда
+        </td>
+        <td class="filters-row-1">
+          Система
+        </td>
+        <td class="filters-row-1">
+          Технолог
+        </td>
+        <td class="filters-row-1">
+          Программист
+        </td>
+        <td class="filters-row-1">
+          Дата создания
+        </td>
+        <td class="filters-row-1">
+          Ответственный
+        </td>
+        <td class="filters-row-1">
+          Шаблон
+        </td>
+        <td class="filters-row-1">
 
-      </td>
-    </tr>
-    </thead>
-    <tbody class="mdata">
+        </td>
+      </tr>
+      </thead>
+      <tbody class="mdata">
 
-    <tr th:each="ol : ${listOrders}">
+      <tr th:each="ol : ${listOrders}">
 
-      <td th:text="${ol.idOrder}"></td>
-      <td th:text="${ol.assemblyNumber}"></td>
-      <td th:text="${ol.number}"></td>
-      <td th:text="${ol.systems}"></td>
-      <td th:text="${ol.idTech}"></td>
-      <td th:text="${ol.idProg}"></td>
-      <td th:text="${ol.dateCreate}"></td>
-      <td th:text="${ol.idOtv}"></td>
-      <td th:text="${ol.template}"></td>
-      <td>
-        <a th:class="openOrder" th:href="@{order_view/{idOrder}(idOrder=${ol.idOrder})}">
-          Открыть</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+        <td th:text="${ol.idOrder}"></td>
+        <td th:text="${ol.assemblyNumber}"></td>
+        <td th:text="${ol.number}"></td>
+        <td th:text="${ol.systems}"></td>
+        <td th:text="${ol.idTech}"></td>
+        <td th:text="${ol.idProg}"></td>
+        <td th:text="${ol.dateCreate}"></td>
+        <td th:text="${ol.idOtv}"></td>
+        <td th:text="${ol.template}"></td>
+        <td>
+          <a th:class="openOrder" th:href="@{order_view/{idOrder}(idOrder=${ol.idOrder})}">
+            Открыть</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
 </body>
 </html>

@@ -14,48 +14,50 @@
 
 
 <div class="orderView">
-  <table class="tOrderMenu">
-    <tbody>
-    <tr>
-      <td class="tm1">
-        <button th:class="orderMenuButton" value="Создать по образцу">
-          <a th:class="korrOrder" th:href="@{/resources/templates/order_edit_template/{idOrder}(idOrder=${orderView.idOrder})}">Создать по шаблону</a>
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
 
   <form th:object="${orderView}" method="post">
   <table class="tOrderView">
     <tbody>
     <tr>
-      <td class="h2" colspan="4">
+      <td class="td2">
+        Номер наряда
+      </td>
+      <td class="h2" colspan="2">
         <span th:text="${orderView.number}">
         </span>
       </td>
-<!--      <td class="h2" colspan="1">-->
-<!--        <span th:text="${orderView.template}">-->
-<!--        </span>-->
-<!--      </td>-->
+      <td class="create-with-template">
+        <button th:class="create-with-template-button" value="Создать по образцу">
+          <a th:class="create-with-template-link" th:href="@{/resources/templates/order_edit_template/{idOrder}(idOrder=${orderView.idOrder})}">Создать по шаблону</a>
+        </button>
+      </td>
     </tr>
     <tr>
-      <td class="h1" colspan="4">
+      <td class="td2">
+        Система
+      </td>
+      <td class="h1" colspan="2">
         <span th:text="${orderView.systems}">
         </span>
       </td>
     </tr>
     <tr>
-      <td class="h2" colspan="4" >
+      <td class="td2">
+        Номер сборки
+      </td>
+      <td class="h2" colspan="2">
         <span th:text="${orderView.assemblyNumber}">
         </span>
       </td>
     </tr>
     <tr>
-      <td class="h2" colspan="4" >
-        <span th:text="${orderView.assemblyLink}">
-
-        </span>
+      <td class="td2">
+        Ссылка на OP
+      </td>
+      <td class="h2" colspan="2">
+        <a class="assembly-link" th:href="@{orderView.assemblyLink}" th:text="${orderView.assemblyLink}"></a>
+<!--        <span th:text="${orderView.assemblyLink}">-->
+<!--        </span>-->
       </td>
     </tr>
     <tr>
@@ -523,32 +525,42 @@
         </button>
       </td>
     </tr>
-<!--    <tr>-->
-<!--      <td class="tm1">-->
-<!--        <button th:class="orderMenuButton" value="Добавить в шаблоны">-->
-<!--          <a th:class="korrOrder" th:href="@{/resources/templates/order_create}">Добавить в шаблоны</a>-->
-<!--        </button>-->
-<!--      </td>-->
-<!--    </tr>-->
   </table>
-  <table class="exOrderMenu">
-    <tr>
-      <td class="tm1">
-        Статус
-      </td>
-      <td class="tm1">
+  <!--  <table class="exOrderMenu">-->
+  <!--    <tr>-->
+  <!--      <td class="tm1">-->
+  <!--        Статус-->
+  <!--      </td>-->
+  <!--      <td class="tm1">-->
 
-      </td>
-    </tr>
-    <tr>
-      <td class="tm1">
-        Исполнитель
-      </td>
-      <td class="tm1">
+  <!--      </td>-->
+  <!--    </tr>-->
+  <!--    <tr>-->
+  <!--      <td class="tm1">-->
+  <!--        Исполнитель-->
+  <!--      </td>-->
+  <!--      <td class="tm1">-->
 
-      </td>
-    </tr>
-  </table>
+  <!--      </td>-->
+  <!--    </tr>-->
+<!--  &lt;!&ndash;  </table>&ndash;&gt;-->
+<!--  <div class="info-cont">-->
+<!--    <div class="info">-->
+<!--      <div class="status-info">-->
+<!--        <div>Статус</div>-->
+<!--        <div>Значение</div>-->
+<!--      </div>-->
+<!--      <div class="executor-info">-->
+<!--        <div>Исполнитель</div>-->
+<!--        <div>Значение</div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <div class="changes-history">История изменений</div>-->
+<!--      <div></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  </div>-->
 </div>
 </body>
 </html>
