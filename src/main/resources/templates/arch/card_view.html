@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Карточка передачи ПО</title>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/card_view.css}"/>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+
+</head>
+<body>
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+</script>
+
+<div class="topnav" id="myTopnav">
+
+  <a th:href="@{/resources/templates/order_list}">
+    Наряды
+  </a>
+  <a th:href="@{/resources/templates/order_list}">
+    Сборки
+  </a>
+  <a th:href="@{/resources/templates/order_list}">
+    Доска
+  </a>
+  <a th:href="@{/resources/templates/order_list}">
+    Настройки
+  </a>
+  <a th:href="@{/resources/templates/order_list}">
+    Сервисы
+  </a>
+  <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+    Создать наряд
+  </a>
+</div>
+
+<div class="cardView">
+  <form th:object="${cardView}" method="post">
+  <table  class="tСardView">
+    <thead>
+    </thead>
+    <tbody >
+    <tr>
+      <td class="c2" colspan="2" >
+        <label>
+          Карта передачи ПО № <span th:text="${cardView.numberCard}"></span>
+        </label>
+      </td>
+    </tr>
+    <tr >
+      <td class="c1">
+        Система
+      </td>
+      <td class="c3">
+      <span th:text="${cardView.system}">
+
+      </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="c1">
+        Статус передачи
+      </td>
+      <td class="c3" >
+        <span th:text="${cardView.status}">
+
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="c1">
+        Ответственный за передачу
+      </td>
+      <td class="c3" >
+        <span th:text="${cardView.idOtv}">
+
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="c1">
+        Дата создания
+      </td>
+      <td class="c3" >
+        <span th:text="${cardView.dateCreate}">
+
+        </span>
+    </tr>
+    <tr>
+      <td class="c1">
+        Дата корректировки
+      </td>
+      <td class="c3" >
+        <span th:text="${cardView.dateCorrect}">
+
+        </span>
+    </tr>
+    <tr>
+      <td class="c2" colspan="2">
+        Передаваемые наряды:
+      </td>
+    </tr>
+    <tr>
+      <td class="c2" colspan="2"></td>
+    </tr>
+
+    </tbody>
+  </table>
+  </form>
+  <table class="tCardMenu">
+    <tr>
+      <td class="tm1">
+        <button th:class="cardMenuButton">
+          <a th:class="korrCard" th:href="@{/resources/templates/order_create/{idCards}(idCards=${cardView.idCards})}">Добавить наряд</a>
+        </button>
+      </td>
+      <td class="tm1">
+        <button th:class="cardMenuButton">
+        <a th:class="korrCard" th:href="@{/resources/templates/card_edit/{idCards}(idCards=${cardView.idCards})}">Корректировать</a>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

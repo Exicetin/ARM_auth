@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание пользователя</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/user.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/menu/menu::menu}">
+</div>
+<div class="cont">
+    <form th:action="@{new_user}" class="user_form" th:object="${user_create}" method="post">
+        <input type="text" th:field="*{login}" placeholder="Введите логин">
+        <input type="text" th:field="*{password}" placeholder="Введите пароль">
+<!--        <select>-->
+<!--            <option th:default="Роль"></option>-->
+<!--        </select>-->
+        <input type="text" th:field="*{role}" placeholder="Введите роль">
+        <input type="text" th:field="*{firstName}" placeholder="Введите фамилию">
+        <input type="text" th:field="*{lastName}" placeholder="Введите имя">
+        <input type="text" th:field="*{middleName}" placeholder="Введите отчество">
+        <input type="text" th:field="*{phone}" placeholder="Введите номер телефона">
+        <input type="text" th:field="*{mail}" placeholder="Введите почту">
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+</body>
+</html>

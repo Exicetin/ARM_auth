@@ -1,0 +1,144 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка №</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/card_edit.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<!--<div th:insert="fragments/menu.html">
+</div>
+-->
+
+<!--<script>-->
+<!--    function myFunction() {-->
+<!--        var x = document.getElementById("myTopnav");-->
+<!--        if (x.className === "topnav") {-->
+<!--            x.className += " responsive";-->
+<!--        } else {-->
+<!--            x.className = "topnav";-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<div class="topnav" id="myTopnav">
+
+    <a th:href="@{/resources/templates/order_list}">
+        Наряды
+    </a>
+    <a th:href="@{/resources/templates/card_list}">
+        Сборки
+    </a>
+    <a th:href="@{/resources/templates/dashboard}">
+        Доска
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Настройки
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Сервисы
+    </a>
+    <a th:href="@{/resources/templates/card_create}" class="new-card-link">
+        Создать сборку
+    </a>
+</div>
+
+<div class="cardEdit">
+    <form th:action="@{new_card}" th:object="${card_create}" method="post">
+        <table class="tCardEdit">
+        <tbody>
+        <tr>
+            <td class="c2" colspan="2">
+                <label>
+                Карта передачи ПО № <input th:field="*{numberCard}" type="text">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="c1">
+                Ответственный за передачу
+            </td>
+            <td class="c3">
+                <label>
+                    <input id="C_OTV" th:field="*{idOtv}" type="text">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="c1">
+                Система
+            </td>
+            <td>
+                <label>
+                    <select>
+                        <option value="ЕМД-ПП"></option>
+                        <option value="РРД-ГП"></option>
+                    </select>
+                    <input id="C_SYSTEM" th:field="*{system}">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="c1">
+                Дата создания
+            </td>
+            <td class="c3">
+                <label for="C_DATE_CREATE">
+                    <input type="date" th:field="*{dateCreate}" id="C_DATE_CREATE">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="c1">
+                Дата корректировки
+            </td>
+            <td class="c3">
+                <label for="C_DATE_KORR">
+                    <input type="date" th:field="*{dateCorrect}" id="C_DATE_KORR">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="c1">
+                Статус передачи
+            </td>
+            <td class="c3">
+<!--                <label>-->
+<!--                    <input type="text" th:field="*{status}" id="C_STATUS">-->
+<!--                </label>-->
+                <select>
+                    <option value="Назначена"></option>
+                    <option value="Согласована"></option>
+                    <option value="На тестировании"></option>
+                    <option value="Согласована"></option>
+                    <option value="Реализована"></option>
+                    <option value="Закрыта"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="c2" colspan="2">
+                Передаваемые наряды:
+            </td>
+        </tr>
+        <tr>
+            <td class="c2" colspan="2">
+
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+    <table class="tCardMenu">
+        <tr>
+            <td class="tm1">
+                    <input  type="submit" value="Сохранить" id="C_SAVE_CARD"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>

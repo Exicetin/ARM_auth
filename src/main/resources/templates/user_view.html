@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр информации о пользователе</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/order_view.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+
+<div th:replace="~{fragments/menu/menu :: menu}">
+</div>
+
+<div class="orderView">
+    <form th:object="${userView}">
+        <table class="tOrderView">
+            <tbody>
+            <tr>
+                <td class="td2">
+                    Логин
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.login}">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Фамилия
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.firstName}">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Имя
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.lastName}">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Отчество
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.middleName}">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Номер телефона
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.phone}">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Почта
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.mail}">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Дата создания записи
+                </td>
+                <td class="td3">
+                    <span th:text="${userView.dateCreate}">
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <table class="tOrderMenu">
+        <tr>
+            <td class="tm1">
+                <button th:class="orderMenuButton" value="Корректировать">
+                    <a th:class="korrOrder" th:href="@{/resources/templates/user_edit/{idUser}(idUser=${userView.idUser})}">Корректировать</a>
+                </button>
+            </td>
+            <td class="tm1">
+                <button th:class="orderMenuButton" value="Деактивировать">
+                    <a th:class="korrOrder">Деактивировать</a>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

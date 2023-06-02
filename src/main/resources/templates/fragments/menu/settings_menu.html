@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню настроек</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/settings.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+</head>
+<body>
+
+
+
+<div th:fragment="settings_menu">
+<!--    <form th:action="set_view">-->
+<!--        <input checked type="radio" name="set_view" value="systems" id="systems">-->
+<!--        <label for="systems">Системы</label>-->
+<!--        <input type="radio" name="set_view" value="groups" id="groups">-->
+<!--        <label for="groups">Группы</label>-->
+<!--        <input type="radio" name="set_view" value="users" id="users">-->
+<!--        <label for="users">Пользователи</label>-->
+<!--    </form>-->
+<!--    <div class="SelectBlock">-->
+<!--        <button onclick="showBlock('AssignToMe')">Назначены мне</button>-->
+<!--        <button onclick="showBlock('MySigns')">Мои подписи</button>-->
+<!--        <button onclick="showBlock('MyHistory')">Моя история</button>-->
+<!--        <button onclick="showBlock('MyGroups')">Мои группы</button>-->
+<!--        <button onclick="showBlock('MyZayavs')">Мои заявки</button>-->
+<!--    </div>-->
+</div>
+<div class="topnav" id="myTopnav" th:fragment="menu" th:switch="${set_view}">
+
+
+</div>
+<div>
+
+</div>
+</body>
+</html>

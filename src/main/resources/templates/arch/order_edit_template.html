@@ -1,0 +1,1082 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Наряд</title>-->
+<!--  <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/order_edit.css}"/>-->
+<!--  <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}">-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<script>-->
+<!--  function myFunction() {-->
+<!--    var x = document.getElementById("myTopnav");-->
+<!--    if (x.className === "topnav") {-->
+<!--      x.className += " responsive";-->
+<!--    } else {-->
+<!--      x.className = "topnav";-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->
+
+<!--<div class="topnav" id="myTopnav">-->
+
+<!--  <a th:href="@{/resources/templates/order_list}">-->
+<!--    Наряды-->
+<!--  </a>-->
+<!--&lt;!&ndash;  <a th:href="@{/resources/templates/card_list}">&ndash;&gt;-->
+<!--&lt;!&ndash;    Сборки&ndash;&gt;-->
+<!--&lt;!&ndash;  </a>&ndash;&gt;-->
+<!--  <a th:href="@{/resources/templates/dashboard}">-->
+<!--    Доска-->
+<!--  </a>-->
+<!--  <a th:href="@{/resources/templates/page_not_found}">-->
+<!--    Настройки-->
+<!--  </a>-->
+<!--  <a th:href="@{/resources/templates/page_not_found}">-->
+<!--    Сервисы-->
+<!--  </a>-->
+<!--  <a th:href="@{/resources/templates/order_create}" class="new-card-link">-->
+<!--    Создать наряд-->
+<!--  </a>-->
+<!--</div>-->
+
+<!--<div class="orderView">-->
+<!--  <form th:action="@{create_order_with_template}" th:object="${orderTemplate}" method="post" >-->
+<!--  <table class="tOrderView">-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--      <td class="h2" colspan="4">-->
+<!--        <input type="text" th:field="${orderTemplate.number}">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="h1" colspan="4">-->
+<!--        <input type="text" th:field="${orderTemplate.systems}">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="h1" colspan="4">-->
+<!--        <input class="assembly-link" type="text" th:field="${orderTemplate.assemblyLink}">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td rowspan="18" class="td1 wr">-->
+<!--        Заполняется разработчиком-->
+<!--      </td>-->
+<!--      <td class="td2">-->
+<!--        Номер версии изменений-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.version}" size="90" maxlength="64">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2">-->
+<!--        Основание-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.reasons}" size="90" maxlength="64">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2">-->
+<!--        Содержание изменений-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        <label>-->
+<!--          <textarea cols="83" rows="17" th:field="${orderTemplate.changeObject}" id="H_CHANGES"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2">-->
+<!--        Изменение в документации-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        <label>-->
+<!--          <input th:field="${orderTemplate.docChange}" type="text" size="90" maxlength="256" id="H_DOC_CHENGE">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td rowspan="2" class="td2">-->
+<!--        Источник данных для обновления ПО-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Тестовый полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.srcTest}" rows="5" id="H_D_SRC_TEST"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Промышленный полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.srcProd}" rows="5" id="H_D_SRC_PROD"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2" >-->
+<!--        Условия для выполнения наряда-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.conditions}" size="90" maxlength="256" id="H_CONDITIONS">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2" >-->
+<!--        Синхронизация работ со смежными системами-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text"  size="90" th:field="${orderTemplate.synchronization}" maxlength="256" id="SINX">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td rowspan="2" class="td2">-->
+<!--        Процедура установки-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Тестовый полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.installTest}" rows="5" id="H_INSTALL_TEST"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Промышленный полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.installProd}" rows="5" id="H_INSTALL_PROD"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td rowspan="2" class="td2">-->
+<!--        Методика проверки работоспособности системы-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Тестовый полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.methodTest}" rows="5" id="H_METHOD_TEST"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Промышленный полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.methodProd}" rows="5" id="H_METHOD_PROD"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td rowspan="2" class="td2">-->
+<!--        Методика проверки внесенных изменений (функционала)-->
+<!--      </td>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Тестовый полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.methodTestF}" rows="5" id="H_METHOD_TEST_F"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td3" colspan="2">-->
+<!--        Промышленный полигон:-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.methodProdF}" rows="5" id="H_METHOD_PROD_F"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2">-->
+<!--        Технология отката-->
+<!--      </td>-->
+<!--      <td class="td2" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.rollback}" size="90" maxlength="256" id="H_ROLLBACK">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td2">-->
+<!--        Контактные данные ответственного разработчика-->
+<!--      </td>-->
+<!--      <td class="td2" colspan="2">-->
+<!--        <label>-->
+<!--          <textarea cols="83" th:field="${orderTemplate.responsibleContact}" rows="4" id="H_CONTACT"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td rowspan="2" class="td2">-->
+<!--        Время простоя системы-->
+<!--      </td>-->
+<!--      <td class="td4">-->
+<!--        Остановка системы-->
+<!--      </td>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Время простоя-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td4">-->
+<!--        <label>-->
+<!--          <select id="H_STOP_SYSTEM" th:field="${orderTemplate.stopSystem}">-->
+<!--            <option value="1">-->
+<!--              Да-->
+<!--            </option>-->
+<!--            <option value="2">-->
+<!--              Нет-->
+<!--            </option>-->
+<!--          </select>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.downTime}" size="40" maxlength="64" id="H_DOWN_TIME">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="5" class="td5">-->
+<!--        ОТВЕТСТВЕННЫЕ ОТ ОРГАНИЗАЦИИ - РАЗРАБОТЧИКА за проведение тестирования на полигоне-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Программист-->
+<!--      </td>-->
+<!--      <td>-->
+
+<!--      </td>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        <<label>-->
+<!--        <input type="text" th:field="${orderTemplate.idProg}" size="40" maxlength="64" id="H_PROGRAMMER">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneProg}" maxlength="64" id="H_PROGRAMMER_PH">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Технолог-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+
+<!--      </td>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.idTech}" maxlength="64" id="H_TECHNOLOG">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneTech}" maxlength="64" id="H_TECHNOLOG_PH">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Администратор-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.idAdm}" maxlength="64" id="H_ADMIN">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneAdm}" maxlength="64" id="H_ADMIN_PH">-->
+<!--        </label>-->
+<!--      </td>-->
+
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="5" class="td5">-->
+<!--        ОТВЕТСТВЕННЫЙ ОТ ФУНКЦИОНАЛЬНОГО ЗАКАЗЧИКА-->
+<!--        <br>-->
+
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" size="40"  maxlength="64" id="H_FZ_FTEST_POST">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+
+<!--      </td>-->
+<!--      <td colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.fzFTest}" maxlength="64" id="H_FZ_FTEST">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneFZFTest}" maxlength="64" id="H_FZ_FTEST_PH">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="5" class="td5">-->
+<!--        ЗАЯВКА НА ТЕСТИРОВАНИЕ-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" rowspan="2" class="td5">-->
+<!--        Дата и время установки на тестовый полигон-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        Дата-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        Время-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="date" th:field="${orderTemplate.dateInstallTest}" id="H_TEST_INST_DATE">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="time" th:field="${orderTemplate.timeInstallTest}" id="H_TEST_INST_TIME">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Контактное лицо заказчика для проведения тестирования-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.idContactTest}" maxlength="64" id="H_ZAK_TEST">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneContactTest}" maxlength="64" id="H_ZAK_TEST_POST">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        <span>-->
+
+<!--        </span>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Источник данных для тестового полигона-->
+<!--      </td>-->
+<!--      <td class="td5" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" size="90" th:field="${orderTemplate.dataSourceTest}" maxlength="256" id="H_TEST_DATASOURCE">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Период тестирования-->
+<!--      </td>-->
+<!--      <td class="td5" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" size="90" th:field="${orderTemplate.periodTest}"  maxlength="256" id="H_TEST_STOP_DATE">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Результаты тестирования-->
+<!--      </td>-->
+<!--      <td class="td5" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" size="90" th:field="${orderTemplate.resultsTest}"  maxlength="256" id="H_RESULT_TEST">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Результаты тестирования. Принятое решение-->
+<!--      </td>-->
+<!--      <td class="td5" colspan="2">-->
+<!--        <label>-->
+<!--          <textarea cols="83" rows="10" th:field="${orderTemplate.resultsTestConclusion}"  id="H_TEST_RESULT"></textarea>-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Ответственный за проведение функционального тестирования-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        № Проекта-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.fzProject}"  size="40" maxlength="14" id="H_PRJ_NUMBER">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        <span>-->
+
+<!--        </span>-->
+<!--        <br>-->
+<!--        <span>-->
+
+<!--        </span>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Ответственный от ЦТС за проведение тестирования-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.idCTSOtv}"  maxlength="64" id="H_OTV_CTS_TEST">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneCTSOtv}" maxlength="64" id="H_OTV_CTS_TEST_PH">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="4" class="td5">-->
+<!--        ПЕРЕНОС НА ПРОМЫШЛЕННЫЙ ПОЛИГОН-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Источник данных для производственного полигона-->
+<!--      </td>-->
+<!--      <td class="td5" colspan="2">-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.dataSourceProd}" maxlength="256" id="H_PROD_DATASOURCE">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" rowspan="2" class="td5">-->
+<!--        Планируемые даты и время установки на промышленный полигон-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        Дата-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        Время-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="date" th:field="${orderTemplate.dateInstallProd}" id="H_PROD_INST_DATE">-->
+<!--        </label>-->
+<!--        <label>-->
+<!--          <input type="time" th:field="${orderTemplate.timeInstallProd}" id="H_PROD_INST_TIME">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2" class="td5">-->
+<!--        Представитель функционального заказчика-->
+<!--      </td>-->
+<!--      <td class="td5">-->
+
+<!--      </td>-->
+<!--      <td class="td5">-->
+<!--        <label>-->
+<!--          <input type="text" th:field="${orderTemplate.idDelegate}" size="40" maxlength="64" id="H_F_CUSTOMER">-->
+<!--        </label>-->
+<!--        <br>-->
+<!--        <label>-->
+<!--          <input type="text" size="40" th:field="${orderTemplate.phoneDeligate}" maxlength="64" id="H_F_CUSTOMER_PH">-->
+<!--        </label>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+
+<!--  <table class="tOrderMenu">-->
+<!--    <tr>-->
+<!--&lt;!&ndash;        <td class="tm1">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="submit" value="Сохранить">&ndash;&gt;-->
+<!--&lt;!&ndash;                Сохранить изменения&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </td>&ndash;&gt;-->
+<!--&lt;!&ndash;      <td>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button th:class="orderMenuButton" value="Сохранить наряд">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a th:class="korrOrder" th:href="@{/resources/templates/order_view}">Сохранить изменения</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </button>&ndash;&gt;-->
+<!--      <td class="tm1">-->
+<!--        <input type="submit" value="Сохранить" />-->
+<!--      </td>-->
+<!--&lt;!&ndash;      </td>&ndash;&gt;-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--  </form>-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Наряд по шаблону</title>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/order_edit.css}"/>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}">
+
+</head>
+<body>
+<script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+</script>
+
+
+<div class="topnav" id="myTopnav">
+
+  <a th:href="@{/resources/templates/order_list}">
+    Наряды
+  </a>
+  <!--  <a th:href="@{/resources/templates/card_list}">-->
+  <!--    Сборки-->
+  <!--  </a>-->
+  <a th:href="@{/resources/templates/dashboard}">
+    Доска
+  </a>
+  <a th:href="@{/resources/templates/page_not_found}">
+    Настройки
+  </a>
+  <a th:href="@{/resources/templates/page_not_found}">
+    Сервисы
+  </a>
+  <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+    Создать наряд
+  </a>
+</div>
+
+<div class="orderView">
+  <form th:action="@{create_order_with_template}" th:object="${orderTemplate}" method="post">
+    <table class="tOrderView">
+      <tbody>
+      <tr>
+        <td class="h2" colspan="4" >
+<!--          <input type="text" th:field="${orderTemplate.number}" placeholder="Номер наряда">-->
+          Номер будет присвоен автоматически
+        </td>
+<!--        <td class="h2" colspan="1">-->
+<!--          <input type="checkbox" th:field="${orderTemplate.template}" value="template">-->
+<!--        </td>-->
+      </tr>
+      <tr>
+        <td class="h2" colspan="4" >
+          <input type="text" th:field="${orderTemplate.systems}" placeholder="Система" th:default="ЕМД-ПП">
+        </td>
+      </tr>
+      <tr>
+        <td class="h2" colspan="4" >
+          <input type="text" th:field="${orderTemplate.assemblyNumber}" placeholder="Номер сборки">
+        </td>
+      </tr>
+      <tr>
+        <td class="h2" colspan="4" >
+          <input class="assembly-link" type="text" th:field="${orderTemplate.assemblyLink}" placeholder="Ссылка на сборку">
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="18" class="td1 wr">
+          Заполняется разработчиком
+        </td>
+        <td class="td2">
+          Номер версии изменений
+        </td>
+        <td class="td3" colspan="2">
+          <label>
+            <input type="text" th:field="${orderTemplate.version}" size="90" maxlength="64">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2">
+          Основание
+        </td>
+        <td class="td3" colspan="2">
+          <label>
+            <input type="text" th:field="${orderTemplate.reasons}" size="90" maxlength="256" autocomplete="off" id="H_REASON">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2">
+          Содержание изменений
+        </td>
+        <td class="td3" colspan="2">
+          <label>
+            <textarea cols="83" rows="17" th:field="${orderTemplate.changeObject}" id="H_CHANGES"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2">
+          Изменение в документации
+        </td>
+        <td class="td3" colspan="2">
+          <label>
+            <input th:field="${orderTemplate.docChange}" type="text" size="90" maxlength="256" id="H_DOC_CHENGE">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="td2">
+          Источник данных для обновления ПО
+        </td>
+        <td class="td3" colspan="2">
+          Тестовый полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.srcTest}" rows="5" id="H_D_SRC_TEST"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td3" colspan="2">
+          Промышленный полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.srcProd}" rows="5" id="H_D_SRC_PROD"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2" >
+          Условия для выполнения наряда
+        </td>
+        <td class="td3" colspan="2">
+          <label>
+            <input type="text" th:field="${orderTemplate.conditions}" size="90" maxlength="256" id="H_CONDITIONS">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2" >
+          Синхронизация работ со смежными системами
+        </td>
+        <td class="td3" colspan="2">
+          <label>
+            <input type="text" th:field="${orderTemplate.synchronization}"  size="90" maxlength="256" id="SINX">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="td2">
+          Процедура установки
+        </td>
+        <td class="td3" colspan="2">
+          Тестовый полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.installTest}" rows="5" id="H_INSTALL_TEST"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td3" colspan="2">
+          Промышленный полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.installProd}" rows="5" id="H_INSTALL_PROD"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="td2">
+          Методика проверки работоспособности системы
+        </td>
+        <td class="td3" colspan="2">
+          Тестовый полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.methodTest}" rows="5" id="H_METHOD_TEST"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td3" colspan="2">
+          Промышленный полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.methodProd}" rows="5" id="H_METHOD_PROD"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="td2">
+          Методика проверки внесенных изменений (функционала)
+        </td>
+        <td class="td3" colspan="2">
+          Тестовый полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.methodTestF}" rows="5" id="H_METHOD_TEST_F"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td3" colspan="2">
+          Промышленный полигон:
+          <br>
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.methodProdF}" rows="5" id="H_METHOD_PROD_F"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2">
+          Технология отката
+        </td>
+        <td class="td2" colspan="2">
+          <label>
+            <input type="text" th:field="${orderTemplate.rollback}" size="90" maxlength="256" id="H_ROLLBACK">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="td2">
+          Контактные данные ответственного разработчика
+        </td>
+        <td class="td2" colspan="2">
+          <label>
+            <textarea cols="83" th:field="${orderTemplate.responsibleContact}" rows="4" id="H_CONTACT"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="td2">
+          Время простоя системы
+        </td>
+        <td class="td4">
+          Остановка системы
+        </td>
+        <td colspan="2" class="td5">
+          Время простоя
+        </td>
+      </tr>
+      <tr>
+        <td class="td4">
+          <label>
+            <select id="H_STOP_SYSTEM" th:field="${orderTemplate.stopSystem}">
+              <option value="1">
+                Да
+              </option>
+              <option value="2">
+                Нет
+              </option>
+            </select>
+          </label>
+        </td>
+        <td colspan="2" class="td5">
+          <label>
+            <input type="text" th:field="${orderTemplate.downTime}" size="40" maxlength="64" id="H_DOWN_TIME">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="td5">
+          ОТВЕТСТВЕННЫЕ ОТ ОРГАНИЗАЦИИ - РАЗРАБОТЧИКА за проведение тестирования на полигоне
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Программист
+        </td>
+        <td>
+        </td>
+        <td colspan="2" class="td5">
+          <label>
+            <input type="text" th:field="${orderTemplate.idProg}" size="40" maxlength="64" id="H_PROGRAMMER">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneProg}" maxlength="64" id="H_PROGRAMMER_PH">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Технолог
+        </td>
+        <td class="td5">
+
+        </td>
+        <td colspan="2" class="td5">
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.idTech}" maxlength="64" id="H_TECHNOLOG">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneTech}" maxlength="64" id="H_TECHNOLOG_PH">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Администратор
+        </td>
+        <td class="td5">
+        </td>
+        <td class="td5">
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.idAdm}" maxlength="64" id="H_ADMIN">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneAdm}" maxlength="64" id="H_ADMIN_PH">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="td5">
+          ОТВЕТСТВЕННЫЙ ОТ ФУНКЦИОНАЛЬНОГО ЗАКАЗЧИКА
+          <br>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          <label>
+            <input type="text" size="40" maxlength="64" id="H_FZ_FTEST_POST">
+          </label>
+        </td>
+        <td class="td5">
+
+        </td>
+        <td colspan="2">
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.fzFTest}" maxlength="64" id="H_FZ_FTEST">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneFZFTest}" maxlength="64" id="H_FZ_FTEST_PH">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="td5">
+          ЗАЯВКА НА ТЕСТИРОВАНИЕ
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" rowspan="2" class="td5">
+          Дата и время установки на тестовый полигон
+        </td>
+        <td class="td5">
+          Дата
+        </td>
+        <td class="td5">
+          Время
+        </td>
+      </tr>
+      <tr>
+        <td class="td5">
+          <label>
+            <input type="date" th:field="${orderTemplate.dateInstallTest}" id="H_TEST_INST_DATE">
+          </label>
+        </td>
+        <td class="td5">
+          <label>
+            <input type="time" th:field="${orderTemplate.timeInstallTest}" id="H_TEST_INST_TIME">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Контактное лицо заказчика для проведения тестирования
+        </td>
+        <td class="td5">
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.idContactTest}" maxlength="64" id="H_ZAK_TEST">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneContactTest}" maxlength="64" id="H_ZAK_TEST_POST">
+          </label>
+        </td>
+        <td colspan="2" class="td5">
+          <label>
+            <input type="text" size="40" maxlength="64" id="H_ZAK_TEST_PH">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Источник данных для тестового полигона
+        </td>
+        <td class="td5" colspan="2">
+          <label>
+            <input type="text" size="90" th:field="${orderTemplate.dataSourceTest}" maxlength="256" id="H_TEST_DATASOURCE">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Период тестирования
+        </td>
+        <td class="td5" colspan="2">
+          <label>
+            <input type="text" size="90" th:field="${orderTemplate.periodTest}"  maxlength="256" id="H_TEST_STOP_DATE">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Результаты тестирования
+        </td>
+        <td class="td5" colspan="2">
+          <label>
+            <input type="text" size="90" th:field="${orderTemplate.resultsTest}"  maxlength="256" id="H_RESULT_TEST">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Результаты тестирования. Принятое решение
+        </td>
+        <td class="td5" colspan="2">
+          <label>
+            <textarea cols="83" rows="10" th:field="${orderTemplate.resultsTestConclusion}"  id="H_TEST_RESULT"></textarea>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Ответственный за проведение функционального тестирования
+        </td>
+        <td class="td5">
+          № Проекта
+          <br>
+          <label>
+            <input type="text" th:field="${orderTemplate.fzProject}"  size="40" maxlength="14" id="H_PRJ_NUMBER">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Ответственный от ЦТС за проведение тестирования
+        </td>
+        <td class="td5">
+
+        </td>
+        <td class="td5">
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.idCTSOtv}"  maxlength="64" id="H_OTV_CTS_TEST">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneCTSOtv}" maxlength="64" id="H_OTV_CTS_TEST_PH">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="td5">
+          ПЕРЕНОС НА ПРОМЫШЛЕННЫЙ ПОЛИГОН
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Источник данных для производственного полигона
+        </td>
+        <td class="td5" colspan="2">
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.dataSourceProd}" maxlength="256" id="H_PROD_DATASOURCE">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" rowspan="2" class="td5">
+          Планируемые даты и время установки на промышленный полигон
+        </td>
+        <td class="td5">
+          Дата
+        </td>
+        <td class="td5">
+          Время
+        </td>
+      </tr>
+      <tr>
+        <td class="td5">
+          <label>
+            <input type="date" th:field="${orderTemplate.dateInstallProd}" id="H_PROD_INST_DATE">
+          </label>
+        </td>
+        <td class="td5">
+          <label>
+            <input type="time" th:field="${orderTemplate.timeInstallProd}" id="H_PROD_INST_TIME">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="td5">
+          Представитель функционального заказчика
+        </td>
+        <td class="td5">
+
+        </td>
+        <td class="td5">
+          <label>
+            <input type="text" th:field="${orderTemplate.idDelegate}" size="40" maxlength="64" id="H_F_CUSTOMER">
+          </label>
+          <br>
+          <label>
+            <input type="text" size="40" th:field="${orderTemplate.phoneDeligate}" maxlength="64" id="H_F_CUSTOMER_PH">
+          </label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="tOrderMenu">
+      <tr>
+        <td class="tm1">
+          <input type="submit" value="Сохранить" />
+        </td>
+<!--        <button th:class="orderMenuButton" value="Сохранить изменения">&ndash;&gt;-->
+<!--          <a th:class="korrOrder" th:href="@{/resources/templates/order_list}">Сохранить изменения</a>-->
+<!--        </button>-->
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

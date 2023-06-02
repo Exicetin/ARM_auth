@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Наряды</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/order_list.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<div class="topnav" id="myTopnav">
+
+    <a th:href="@{/resources/templates/order_list}">
+        Наряды
+    </a>
+    <!--  <a th:href="@{/resources/templates/card_list}">-->
+    <!--    Сборки-->
+    <!--  </a>-->
+    <a th:href="@{/resources/templates/dashboard}">
+        Доска
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Настройки
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Сервисы
+    </a>
+    <div>
+        <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+            Создать наряд по шаблону
+        </a>
+        <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+            Создать наряд без шаблона
+        </a>
+    </div>
+
+</div>
+<div class="orders-filters">
+    <div class="orders-filters-cont">
+        <div>Разработчик</div>
+        <div>Статус</div>
+        <div>Номер сборки</div>
+        <div>
+            <input type="text" id="с_developer">
+        </div>
+        <div>
+            <input type="text" id="c_status">
+        </div>
+        <div>
+            <input type="text" id="с_num_assembly">
+        </div>
+        <div>Программист</div>
+        <div>Дата создания</div>
+        <div>Номер наряда</div>
+        <div>
+            <input type="text" id="c_programmer">
+        </div>
+        <div>
+            <input type="date" id="c_date_create">
+        </div>
+        <div>
+            <input type="text" id="c_num_order">
+        </div>
+        <div>Технолог</div>
+        <div>Дата корректировки</div>
+        <div></div>
+        <div>
+            <input type="text" id="c_tech">
+        </div>
+        <div>
+            <input type="date" id="c_date_adjustment">
+        </div>
+        <div>
+            <input type="submit" class="search-button" value="Поиск">
+        </div>
+    </div>
+</div>
+
+<div class="orders-list">
+    <table class="orders-list-table">
+        <thead>
+        <tr class="orders-list-filters-table">
+            <td class="filters-row-1">
+                id наряда
+            </td>
+            <td class="filters-row-1">
+                № Наряда
+            </td>
+            <td class="filters-row-1">
+                Система
+            </td>
+            <td class="filters-row-1">
+                Технолог
+            </td>
+            <td class="filters-row-1">
+                Программист
+            </td>
+            <td class="filters-row-1">
+                Дата создания
+            </td>
+            <td class="filters-row-1">
+                Ответственный
+            </td>
+            <td class="filters-row-1">
+
+            </td>
+        </tr>
+        </thead>
+        <tbody class="mdata">
+
+        <tr th:each="ol : ${listOrders}">
+
+            <td th:text="${ol.idOrders}"></td>
+            <td th:text="${ol.number}"></td>
+            <td th:text="${ol.systems}"></td>
+            <td th:text="${ol.idTech}"></td>
+            <td th:text="${ol.idProg}"></td>
+            <td th:text="${ol.dateCreate}"></td>
+            <td th:text="${ol.idOtv}"></td>
+            <td>
+                <a th:class="openOrder" th:href="@{order_view/{idOrders}(idOrders=${ol.idOrders})}">
+                    Открыть</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

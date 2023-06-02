@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр шаблона</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/order_view.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}"/>
+
+</head>
+<body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+
+<div class="topnav" id="myTopnav">
+
+    <a th:href="@{/resources/templates/order_list}">
+        Наряды
+    </a>
+    <!--  <a th:href="@{/resources/templates/card_list}">-->
+    <!--    Сборки-->
+    <!--  </a>-->
+    <a th:href="@{/resources/templates/dashboard}">
+        Доска
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Настройки
+    </a>
+    <a th:href="@{/resources/templates/page_not_found}">
+        Сервисы
+    </a>
+    <div>
+        <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+            Создать наряд по шаблону
+        </a>
+        <a th:href="@{/resources/templates/order_create}" class="new-card-link">
+            Создать наряд без шаблона
+        </a>
+    </div>
+<div class="orderView">
+    <form th:object="${orderView}" method="post">
+        <table class="tOrderView">
+            <tbody>
+            <tr>
+                <td class="h2" colspan="4">
+        <span th:text="${orderView.number}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="h1" colspan="4">
+        <span th:text="${orderView.systems}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="h2" colspan="4" >
+        <span th:text="${orderView.assemblyLink}">
+
+        </span>
+                </td>
+            </tr>
+            <!--    <tr>
+                  <td class="h1" colspan="4">
+                    <label>
+                      <input type="text" ID="H_GHANGE_OBJECT" title="Объект внесения изменений (БД, серверная часть, форма и др.)">
+                    </label>
+                  </td>
+                </tr>-->
+            <tr>
+                <td rowspan="18" class="td1 wr">
+                    Заполняется разработчиком
+                </td>
+                <td class="td2">
+                    Номер версии изменений
+                </td>
+                <td class="td3" colspan="2">
+        <span th:text="${orderView.version}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Основание
+                </td>
+                <td class="td3" colspan="2">
+        <span th:text="${orderView.reasons}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Содержание изменений
+                </td>
+                <td class="td3" colspan="2">
+        <span th:text="${orderView.changeObject}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Изменение в документации
+                </td>
+                <td class="td3" colspan="2">
+        <span th:text="${orderView.docChange}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="td2">
+                    Источник данных для обновления ПО
+                </td>
+                <td class="td3" colspan="2">
+                    Тестовый полигон:
+                    <br>
+                    <span th:text="${orderView.srcTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                    Промышленный полигон:
+                    <br>
+                    <span th:text="${orderView.srcProd}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2" >
+                    Условия для выполнения наряда
+                </td>
+                <td class="td3" colspan="2">
+                <span th:text="${orderView.conditions}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2" >
+                    Синхронизация работ со смежными системами
+                </td>
+                <td class="td3" colspan="2">
+                <span th:text="${orderView.synchronization}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="td2">
+                    Процедура установки
+                </td>
+                <td class="td3" colspan="2">
+                    Тестовый полигон:
+                    <br>
+                    <span th:text="${orderView.installTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                    Промышленный полигон:
+                    <br>
+                    <span th:text="${orderView.installProd}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="td2">
+                    Методика проверки работоспособности системы
+                </td>
+                <td class="td3" colspan="2">
+                    Тестовый полигон:
+                    <br>
+                    <span th:text="${orderView.methodTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                    Промышленный полигон:
+                    <br>
+                    <span th:text="${orderView.methodProd}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="td2">
+                    Методика проверки внесенных изменений (функционала)
+                </td>
+                <td class="td3" colspan="2">
+                    Тестовый полигон:
+                    <br>
+                    <span th:text="${orderView.methodTestF}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                    Промышленный полигон:
+                    <br>
+                    <span th:text="${orderView.methodProdF}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Технология отката
+                </td>
+                <td class="td2" colspan="2">
+        <span th:text="${orderView.rollback}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    Контактные данные ответственного разработчика
+                </td>
+                <td class="td2" colspan="2">
+        <span th:text="${orderView.responsibleContact}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="td2">
+                    Время простоя системы
+                </td>
+                <td class="td4">
+                    Остановка системы
+                </td>
+                <td colspan="2" class="td5">
+                    Время простоя
+                </td>
+            </tr>
+            <tr>
+                <td class="td4">
+        <span th:text="${orderView.stopSystem}">
+
+        </span>
+                </td>
+                <td colspan="2" class="td5">
+        <span th:text="${orderView.downTime}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="td5">
+                    ОТВЕТСТВЕННЫЕ ОТ ОРГАНИЗАЦИИ - РАЗРАБОТЧИКА за проведение тестирования на полигоне
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Программист
+                </td>
+                <td>
+
+                </td>
+                <td colspan="2" class="td5">
+        <span th:text="${orderView.idProg}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneProg}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Технолог
+                </td>
+                <td class="td5">
+
+                </td>
+                <td colspan="2" class="td5">
+        <span th:text="${orderView.idTech}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneTech}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Администратор
+                </td>
+                <td class="td5">
+
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.idAdm}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneAdm}">
+
+        </span>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="5" class="td5">
+                    ОТВЕТСТВЕННЫЙ ОТ ФУНКЦИОНАЛЬНОГО ЗАКАЗЧИКА
+                    <br>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    <!--        <label>-->
+                    <!--          <input type="text" size="40"  maxlength="64" id="H_FZ_FTEST_POST">-->
+                    <!--        </label>-->
+                </td>
+                <td class="td5">
+
+                </td>
+                <td colspan="2">
+        <span th:text="${orderView.fzFTest}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="td5">
+                    ЗАЯВКА НА ТЕСТИРОВАНИЕ
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="2" class="td5">
+                    Дата и время установки на тестовый полигон
+                </td>
+                <td class="td5">
+                    Дата
+                </td>
+                <td class="td5">
+                    Время
+                </td>
+            </tr>
+            <tr>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Контактное лицо заказчика для проведения тестирования
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+                <td colspan="2" class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Источник данных для тестового полигона
+                </td>
+                <td class="td5" colspan="2">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Период тестирования
+                </td>
+                <td class="td5" colspan="2">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Результаты тестирования
+                </td>
+                <td class="td5" colspan="2">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Результаты тестирования. Принятое решение
+                </td>
+                <td class="td5" colspan="2">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Ответственный за проведение функционального тестирования
+                </td>
+                <td class="td5">
+                    № Проекта
+                    <br>
+                    <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Ответственный от ЦТС за проведение тестирования
+                </td>
+                <td class="td5">
+
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="td5">
+                    ПЕРЕНОС НА ПРОМЫШЛЕННЫЙ ПОЛИГОН
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Источник данных для производственного полигона
+                </td>
+                <td class="td5" colspan="2">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="2" class="td5">
+                    Планируемые даты и время установки на промышленный полигон
+                </td>
+                <td class="td5">
+                    Дата
+                </td>
+                <td class="td5">
+                    Время
+                </td>
+            </tr>
+            <tr>
+                <td>
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td5">
+                    Представитель функционального заказчика
+                </td>
+                <td class="td5">
+
+                </td>
+                <td class="td5">
+        <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                    <br>
+                    <span th:text="${orderView.phoneFZFTest}">
+
+        </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <table class="tOrderMenu">
+        <tr>
+            <td class="tm1">
+                <button th:class="orderMenuButton" value="Корректировать">
+                    <a th:class="korrOrder" th:href="@{/resources/templates/order_edit/{idOrders}(idOrders=${orderView.idOrders})}">Корректировать</a>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="tm1">
+                <button th:class="orderMenuButton" value="Создать по образцу">
+                    <a th:class="korrOrder" th:href="@{/resources/templates/order_create}">Создать по образцу</a>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <table class="exOrderMenu">
+        <tr>
+            <td class="tm1">
+                Статус
+            </td>
+            <td class="tm1">
+
+            </td>
+        </tr>
+        <tr>
+            <td class="tm1">
+                Исполнитель
+            </td>
+            <td class="tm1">
+
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

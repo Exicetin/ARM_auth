@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр информации о пользователе</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/order_list.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/menu/menu::menu}">
+</div>
+
+<div class="orders-list">
+    <table class="orders-list-table" id="orderList">
+        <thead>
+        <tr class="orders-list-filters-table">
+            <td class="filters-row-1">
+                id пользователя
+            </td>
+            <td class="filters-row-1">
+                Фамилия
+            </td>
+            <td class="filters-row-1">
+                Имя
+            </td>
+            <td class="filters-row-1">
+                Роль
+            </td>
+            <td class="filters-row-1">
+                Телефон
+            </td>
+            <td class="filters-row-1">
+                Почта
+            </td>
+            <td class="filters-row-1">
+                Дата создания записи
+            </td>
+            <td class="filters-row-1">
+                <a th:href="@{/resources/templates/user_create}">
+                    +
+                </a>
+            </td>
+
+        </tr>
+        </thead>
+        <tbody class="mdata">
+
+        <tr th:each="us : ${users}">
+
+            <td th:text="${us.idUser}"></td>
+            <td th:text="${us.firstName}"></td>
+            <td th:text="${us.lastName}"></td>
+            <td th:text="${us.role}"></td>
+            <td th:text="${us.phone}"></td>
+            <td th:text="${us.mail}"></td>
+            <td th:text="${us.dateCreate}"></td>
+            <td>
+                <a th:class="openOrder" th:href="@{user_view/{idUser}(idUser=${us.idUser})}">
+                    Открыть</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
